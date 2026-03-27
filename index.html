@@ -1,128 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lacos Gallery</title>
-
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
 </head>
-
 <body>
-
-<!-- HEADER -->
-<div class="header">
-    <div class="left-part">
-        <div class="logo">LACOS</div>
-        <div class="tag">A Visual Archive</div>
-    </div>
-
-    <div class="right-part">
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-        <div class="menu" id="menu">
-            <div class="menu-item" onclick="adminLogin()" id="loginBtn">Login</div>
-            <div class="menu-item" onclick="logout()" id="logoutBtn" style="display:none;">Logout</div>
-            <label for="upload" class="menu-item admin-only" style="display:none;">Upload</label>
-            <div class="menu-item admin-only" onclick="clearAll()" style="display:none;">Clear All</div>
-            <div class="menu-item" onclick="showContact()">Contact</div>
-        </div>
-    </div>
-</div>
-
-<input type="file" id="upload" multiple hidden>
-
-<!-- TEXT -->
-<div class="text-section">
-    <p class="small-title">SELECTED WORKS</p>
-    <h2 class="main-title">Collection</h2>
-</div>
-
-<!-- GALLERY -->
-<div class="container">
-    <div class="grid" id="gallery"></div>
-</div>
-
-<script>
-let isAdmin = false;
-
-const gallery = document.getElementById("gallery");
-
-/* 🔥 ADD YOUR GITHUB IMAGES HERE */
-const images = [
-    { src: "https://raw.githubusercontent.com/SABAHH3004/myproject/main/Images/43f5ae21-10db-4bda-8d97-14da41bcb499.jpeg", name: "Artwork 1" },
-    { src: "https://raw.githubusercontent.com/SABAHH3004/myproject/main/Images/5faafe25-f148-4146-83e9-b0888699fe42.jpeg", name: "Artwork 2" },
-    { src: "https://raw.githubusercontent.com/SABAHH3004/myproject/main/images/img-3.jpg", name: "Artwork 3" }
-];
-
-/* LOAD IMAGES */
-window.onload = function () {
-    refreshGallery();
-};
-
-/* MENU */
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
-
-/* ADMIN LOGIN (UI ONLY) */
-function adminLogin() {
-    let password = prompt("Enter Admin Password:");
-    if (password === "lacos") {
-        isAdmin = true;
-        alert("Admin Mode Activated");
-
-        document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
-        document.getElementById("loginBtn").style.display = "none";
-        document.getElementById("logoutBtn").style.display = "block";
-
-        refreshGallery();
-    } else {
-        alert("Wrong Password");
-    }
-}
-
-/* LOGOUT */
-function logout() {
-    isAdmin = false;
-
-    document.querySelectorAll(".admin-only").forEach(el => el.style.display = "none");
-    document.getElementById("loginBtn").style.display = "block";
-    document.getElementById("logoutBtn").style.display = "none";
-
-    refreshGallery();
-}
-
-/* CREATE CARD */
-function createCard(src, name) {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    const img = document.createElement("img");
-    img.src = src;
-    img.onerror = () => {
-        console.error(`Failed to load: ${src}`);
-        img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23ddd' width='100' height='100'/%3E%3Ctext x='50' y='50' text-anchor='middle' dy='.3em' fill='%23999'%3EImage Not Found%3C/text%3E%3C/svg%3E";
-    };
-
-    card.appendChild(img);
-    card.innerHTML += `<div class="overlay"><div class="bottom">${name}</div></div>`;
-    gallery.appendChild(card);
-}
-
-/* REFRESH */
-function refreshGallery() {
-    gallery.innerHTML = "";
-    images.forEach(img => createCard(img.src, img.name));
-}
-
-/* CONTACT */
-function showContact() {
-    alert("Contact: your@email.com");
-}
-</script>
-
+    <h1>Welcome to My Project</h1>
+    <img src="https://raw.githubusercontent.com/SABAHH3004/myproject/main/Images/image1.jpg" alt="Image 1">
+    <img src="https://raw.githubusercontent.com/SABAHH3004/myproject/main/Images/image2.jpg" alt="Image 2">
+    <img src="https://raw.githubusercontent.com/SABAHH3004/myproject/main/Images/image3.jpg" alt="Image 3">
+    <img src="https://raw.githubusercontent.com/SABAHH3004/myproject/main/Images/image4.jpg" alt="Image 4">
+    <img src="https://raw.githubusercontent.com/SABAHH3004/myproject/main/Images/image5.jpg" alt="Image 5">
 </body>
 </html>
